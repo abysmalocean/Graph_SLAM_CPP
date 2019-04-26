@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/lectures-robotics2/!svn/ver/38/practicals/ls-slam/data
+END
+mit-e.dat
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/lectures-robotics2/!svn/ver/38/practicals/ls-slam/data/mit-e.dat
+END
+killian-e.dat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/lectures-robotics2/!svn/ver/38/practicals/ls-slam/data/killian-e.dat
+END
+killian-v.dat
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/lectures-robotics2/!svn/ver/38/practicals/ls-slam/data/killian-v.dat
+END
+killian-small-rot-inf-e.dat
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/lectures-robotics2/!svn/ver/38/practicals/ls-slam/data/killian-small-rot-inf-e.dat
+END
