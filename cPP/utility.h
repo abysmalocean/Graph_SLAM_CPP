@@ -22,6 +22,8 @@ struct Edge
         fileLine >> infXT;  
         fileLine >> infYT;  
         fileLine >> infTT; 
+        genMatrix(); 
+
     }
     int idFrom;
     int idTo;
@@ -34,22 +36,36 @@ struct Edge
     double infXT; 
     double infYT; 
     double infTT;
+    Eigen::Vector3d mean; 
+    Eigen::Matrix3d infm; 
+
+    void genMatrix()
+    {
+        mean << meanX,  meanY, meanTheta; 
+        infm << infXX, infXY, infXT, infXY, infYY, infYT, infXT,
+                infYT, infTT; 
+    }
+
 }; 
 
 struct Vertex
 {
     Vertex(int id, double poseX, double poseY, double poseThe): 
-        id(id), poseX(poseX), poseY(poseY), poseThe(poseThe){}
+        id(id), poseX(poseX), poseY(poseY), poseThe(poseThe)
+    {
+        mean << poseX, poseY, poseThe; 
+    }
     int id; 
     double poseX; 
     double poseY; 
     double poseThe;
+    Eigen::Vector3d mean; 
     std::vector<Edge*> in; 
     std::vector<Edge*> out; 
 }; 
 
 
-Eigen::Matrix3d v2t(Vertex* V)
+Eigen::Matrix3d v2t(Eigen::Vector3d& Vec)
 {
     /*
     Matrix3f m;
@@ -57,10 +73,10 @@ Eigen::Matrix3d v2t(Vertex* V)
      4, 5, 6,
      7, 8, 9;
     */
-    double c = std::cos(V->poseThe); 
-    double s = std::sin(V->poseThe); 
+    double c = std::cos(Vec(2)); 
+    double s = std::sin(Vec(2)); 
     Eigen::Matrix3d Trans;
-    Trans << c , -s, V->poseX, s, c, V->poseY, 0, 0, 1; 
+    Trans << c , -s, Vec(0), s, c, Vec(1), 0, 0, 1; 
     return Trans; 
 }
 
